@@ -10,7 +10,7 @@ import config from '../config';
 
 //Redux-persist
 const persistConfig = {
-  key: 'NWMobileApp ' + config.version,
+  key: 'MangaReader ' + config.version,
   storage: AsyncStorage,
 };
 
