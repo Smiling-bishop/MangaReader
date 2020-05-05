@@ -112,7 +112,7 @@ function makeActionAsyncTest(prefix, action_object, apiCall) {
       dispatch(actions.request(...args));
       try {
         const response = await apiCall(...args);
-        dispatch(actions.success({response}));
+        dispatch(actions.success(response));
         return response;
       } catch (error) {
         dispatch(actions.error({error}));

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
+const appStyles = {
+  mainColor: '#1d2539',
+};
 
-const AppStyles = StyleSheet.create({});
-
-export default AppStyles;
+export default appStyles;
