@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import {store, persistor} from './redux';
 import appStyles from './appStyles';
+import Navigation from './navigation';
 
 const App: () => React$Node = () => {
   return (
@@ -12,7 +13,9 @@ const App: () => React$Node = () => {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <StatusBar barStyle="light-content" />
-          <View style={styles.mainContainer} />
+          <View style={styles.mainContainer}>
+            <Navigation />
+          </View>
         </PersistGate>
       </Provider>
     </>
