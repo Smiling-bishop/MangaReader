@@ -3,6 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../pages/Home';
 import appStyles from '../appStyles';
+import Manga from '../pages/Manga';
+import Reader from '../pages/Reader';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +19,8 @@ const MainStack = () => {
         },
       }}>
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Manga" component={Manga} />
+      <Stack.Screen name="Reader" component={Reader} />
     </Stack.Navigator>
   );
 };

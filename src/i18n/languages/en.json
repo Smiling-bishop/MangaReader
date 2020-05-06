@@ -1,3 +1,9 @@
 {
-  "home.hello": "Hello"
+  "home.hello": "Hello",
+  "By": "By",
+  "Chapters": "Chapters",
+  "Favorite": "Favorite",
+  "Resume": "Resume",
+  "Description": "Description",
+  "view-all": "View All"
 }

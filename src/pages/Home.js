@@ -1,19 +1,15 @@
 import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
-import CustomText from '../components/CustomText';
 import {useDispatch, useSelector} from 'react-redux';
-import {actions} from '../redux/reducer/mangaEden';
 import SafeContainer from '../components/SafeContainer/SafeContainer';
-import i18n from '../i18n';
-import config from '../config';
 import appStyles from '../appStyles';
 import MangaCover from '../components/MangaCover/MangaCover';
+import Header from '../components/Header/Header';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const mangas = useSelector(state => state.mangaEden.mangas);
   const dispatch = useDispatch();
 
-  console.log('Redux: ', mangas);
   React.useEffect(() => {
     // dispatch(actions.getMangas("));
     // dispatch(actions.getManga('4e70ea10c092255ef7004aa2'));
@@ -21,18 +17,20 @@ const Home = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <SafeContainer>
-      <View style={styles.headerContainer}>
-        <CustomText.Header>{config.appName}</CustomText.Header>
-      </View>
+      <Header />
       <View style={styles.contentContainer}>
-        {/*<MangaCover {...mangas[0]} pos={0} />*/}
-
         <FlatList
           data={mangas}
           numColumns={3}
-          renderItem={({item}, key) => (
+          renderItem={({item, index}) => (
             <View style={styles.coverContainer}>
-              <MangaCover {...item} pos={key} />
+              <MangaCover
+                {...item}
+                pos={index}
+                onPress={() =>
+                  navigation.navigate('Manga', {id: item.id, index})
+                }
+              />
             </View>
           )}
           keyExtractor={item => item.id}
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
   coverContainer: {
     flex: 1,
     alignItems: 'center',
-    marginVertical: 10
+    marginVertical: 10,
   },
 });
 
