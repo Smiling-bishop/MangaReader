@@ -15,6 +15,7 @@ const READING_STATUS = {
   WANTED: 1,
   READING: 2,
 };
+
 const apiMangaEden = {
   language: LANGUAGES.english,
   setLanguage: lng =>
@@ -39,8 +40,7 @@ const apiMangaEden = {
     categories: c,
     latestChapterId: ld,
     hits: h,
-    details: null,
-    latestRead: null,
+    latestRead: -1,
     readingStatus: READING_STATUS.NONE,
   }),
   reformatMangaDetails: ({
@@ -90,6 +90,7 @@ const apiMangaEden = {
         );
         let details = apiMangaEden.reformatMangaDetails(data);
         details.chapters = details.chapters.map(apiMangaEden.reformatChapter);
+        details.chapters.reverse();
 
         return {mangaId, details};
       } catch (err) {
@@ -103,6 +104,7 @@ const apiMangaEden = {
         );
         let pages = data.images;
         pages = pages.map(page => apiMangaEden.reformatChapterImage(page));
+        pages.reverse();
 
         return {
           mangaId,

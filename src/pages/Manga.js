@@ -14,13 +14,13 @@ import Margin from '../components/Margin/Margin';
 import Header from '../components/Header/Header';
 import assets from '../assets';
 import Tag from '../components/Tag/Tag';
+import {actions} from '../redux/reducer/mangaEden';
 
 const MangaChapters = ({chapters_len, chapters, latestRead}) => {
   let ChapterComponent = () => {
     let list = [];
 
     for (let i = 1; chapters_len - i >= 0 && i <= 5; ++i) {
-      console.log(chapters[i]);
       list.push(
         <View key={chapters[i].id} style={styles.chapterRow}>
           <CustomText.Description
@@ -84,8 +84,8 @@ const Manga = ({
   },
   navigation,
 }) => {
+  console.log(id, index);
   const {
-    artist,
     author,
     categories,
     chapters_len,
@@ -98,6 +98,14 @@ const Manga = ({
     title,
   } = useSelector(state => state.mangaEden.mangas[index]);
   const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(actions.getManga(id));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!description) {
+    return null;
+  }
 
   return (
     <SafeContainer>
@@ -132,7 +140,8 @@ const Manga = ({
 
         <MangaActions
           chapters_len={chapters_len}
-          mangaId={id}
+          mangaId={index}
+          latestRead={latestRead}
           navigation={navigation}
         />
         <View style={styles.colorSeparator} />

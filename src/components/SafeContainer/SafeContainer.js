@@ -1,8 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 import {useSafeArea} from 'react-native-safe-area-context';
 
-const SafeContainer = ({children}) => {
+const SafeContainer = ({style, children, ...props}) => {
   const {
     top: marginTop,
     bottom: marginBottom,
@@ -12,13 +12,16 @@ const SafeContainer = ({children}) => {
 
   return (
     <View
-      style={{
-        marginTop,
-        marginBottom,
-        marginLeft,
-        marginRight,
-        flex: 1,
-      }}>
+      style={[
+        {
+          marginTop,
+          marginBottom,
+          marginLeft,
+          marginRight,
+          flex: 1,
+        },
+        style,
+      ]} {...props}>
       {children}
     </View>
   );

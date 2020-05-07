@@ -1,11 +1,10 @@
 import React from 'react';
 import {View, TouchableOpacity, Image, StyleSheet} from 'react-native';
-import assets from '../../assets';
 import CustomText from '../CustomText';
 import config from '../../config';
 import appStyles from '../../appStyles';
 
-const HEIGHT = 50;
+export const HEADER_HEIGHT = 50;
 
 const Header = ({
   title = config.appName,
@@ -46,7 +45,7 @@ const Header = ({
 
 const styles = StyleSheet.create({
   mainContainer: {
-    height: HEIGHT,
+    height: HEADER_HEIGHT,
     width: '100%',
     flexDirection: 'row',
     borderBottomColor: appStyles.secondaryColor,
@@ -61,13 +60,13 @@ const styles = StyleSheet.create({
     zIndex: 99,
   },
   lateralContainer: {
-    height: HEIGHT,
-    width: HEIGHT,
+    height: HEADER_HEIGHT,
+    width: HEADER_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
   },
   centralContainer: {
-    height: HEIGHT,
+    height: HEADER_HEIGHT,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',

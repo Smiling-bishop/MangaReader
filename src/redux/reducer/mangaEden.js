@@ -4,12 +4,20 @@ import axios from 'axios';
 
 const initialState = {
   mangas: [],
+  waitingList: [],
+  favorites: [],
   lastUpdate: 0,
   updating: false,
   loading: false,
 };
 
-const handlers = {};
+const handlers = {
+  setLatestRead: (state, {mangaId, chapterId}) => {
+    let mangas = [...state.mangas];
+    mangas[mangaId].latestRead = chapterId;
+    return {...state, mangas};
+  },
+};
 
 const handlersAsync = {
   getMangas: {

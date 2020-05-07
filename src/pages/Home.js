@@ -5,21 +5,25 @@ import SafeContainer from '../components/SafeContainer/SafeContainer';
 import appStyles from '../appStyles';
 import MangaCover from '../components/MangaCover/MangaCover';
 import Header from '../components/Header/Header';
+import {actions} from '../redux/reducer/mangaEden';
 
 const Home = ({navigation}) => {
-  const mangas = useSelector(state => state.mangaEden.mangas);
+  const {mangas, updating} = useSelector(state => ({
+    mangas: state.mangaEden.mangas,
+    updating: state.mangaEden.updating,
+  }));
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    // dispatch(actions.getMangas("));
-    // dispatch(actions.getManga('4e70ea10c092255ef7004aa2'));
-    // dispatch(actions.getChapter('4e70ea10c092255ef7004aa2', "5ea2b8b4719a16656f960fce"));
+    //TODO smooth update while keeping previous data
+    dispatch(actions.getMangas());
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <SafeContainer>
       <Header />
       <View style={styles.contentContainer}>
         <FlatList
+          refreshing={updating}
           data={mangas}
           numColumns={3}
           renderItem={({item, index}) => (
