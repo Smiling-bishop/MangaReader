@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: appStyles.backgroundDarkColor,
     alignItems: 'center',
-    borderRadius: 5
+    borderRadius: 5,
   },
 });
 export default CustomButton;

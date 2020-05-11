@@ -73,14 +73,8 @@ const Reader = ({
 }) => {
   const dispatch = useDispatch();
   const [focus, setFocus] = React.useState(false);
-  const {id, chapters, chapters_len, latestRead, title} = useSelector(
-    state => ({
-      id: state.mangaEden.mangas[mangaId].id,
-      chapters: state.mangaEden.mangas[mangaId].chapters,
-      chapters_len: state.mangaEden.mangas[mangaId].chapters_len,
-      latestRead: state.mangaEden.mangas[mangaId].latestRead,
-      title: state.mangaEden.mangas[mangaId].title,
-    }),
+  const {chapters, chapters_len, latestRead, title} = useSelector(state =>
+    state.mangaEden.mangas.find(item => mangaId === item.id),
   );
 
   React.useEffect(() => {
@@ -90,7 +84,7 @@ const Reader = ({
     }
     const chapToLoad = chapters[latestRead];
     if (!chapToLoad.pages) {
-      dispatch(actions.getChapter(id, chapToLoad.id));
+      dispatch(actions.getChapter(mangaId, chapToLoad.id));
     }
   }, [latestRead]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -103,6 +97,7 @@ const Reader = ({
       </SafeContainer>
     );
   }
+
   return (
     <SafeContainer
       onStartShouldSetResponder={() => {
@@ -146,7 +141,7 @@ const Reader = ({
           </View>
         )}
         renderItem={({item}) => (
-          <FastImage
+          <Image
             style={{
               width: '100%',
               height: fitHeight(item.width, item.height),

@@ -14,7 +14,8 @@ const initialState = {
 const handlers = {
   setLatestRead: (state, {mangaId, chapterId}) => {
     let mangas = [...state.mangas];
-    mangas[mangaId].latestRead = chapterId;
+    const pos = mangas.findIndex(item => item.id === mangaId);
+    mangas[pos].latestRead = chapterId;
     return {...state, mangas};
   },
 };
@@ -90,6 +91,7 @@ const handlersAsync = {
         );
         mangas[pos].chapters[posChapter].pages = pages;
       }
+      console.log(mangas[pos]);
 
       return {
         ...state,

@@ -21,7 +21,8 @@ const SafeContainer = ({style, children, ...props}) => {
           flex: 1,
         },
         style,
-      ]} {...props}>
+      ]}
+      {...props}>
       {children}
     </View>
   );

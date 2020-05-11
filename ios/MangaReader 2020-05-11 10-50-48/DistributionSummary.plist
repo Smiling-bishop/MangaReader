@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MangaReader.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>6FE79B8A974C481D0FC23E6107D38F3F778A9B94</string>
+				<key>dateExpires</key>
+				<string>29.04.21</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>A5T27ZCN2J.org.reactjs.native.example.MangaReader</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>A5T27ZCN2J</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>A5T27ZCN2J.org.reactjs.native.example.MangaReader</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>MangaReader.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>ea90019f-2a7f-4604-a2e9-fdd879d4382d</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>A5T27ZCN2J</string>
+				<key>name</key>
+				<string>Thimotey TSAN</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

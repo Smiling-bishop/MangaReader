@@ -27,7 +27,9 @@ const MangaChapters = ({chapters_len, chapters, latestRead}) => {
             style={{color: appStyles.secondaryColor}}
             numberOfLines={1}
             ellipsizeMode={'middle'}>
-            {chapters[i].title}
+            {chapters[i].title !== null
+              ? chapters[i].title
+              : `Chapter ${chapters[i].number}`}
           </CustomText.Description>
         </View>,
       );
@@ -84,26 +86,23 @@ const Manga = ({
   },
   navigation,
 }) => {
-  console.log(id, index);
   const {
     author,
     categories,
     chapters_len,
     chapters,
     description,
-    hits,
     imageCover,
     latestRead,
-    released,
     title,
-  } = useSelector(state => state.mangaEden.mangas[index]);
+  } = useSelector(state => state.mangaEden.mangas.find(item => id === item.id));
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(actions.getManga(id));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!description) {
+  if (description === undefined) {
     return null;
   }
 
@@ -140,7 +139,7 @@ const Manga = ({
 
         <MangaActions
           chapters_len={chapters_len}
-          mangaId={index}
+          mangaId={id}
           latestRead={latestRead}
           navigation={navigation}
         />

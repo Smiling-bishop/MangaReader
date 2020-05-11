@@ -91,6 +91,7 @@ const apiMangaEden = {
         let details = apiMangaEden.reformatMangaDetails(data);
         details.chapters = details.chapters.map(apiMangaEden.reformatChapter);
         details.chapters.reverse();
+        console.log('data', data, details);
 
         return {mangaId, details};
       } catch (err) {
